@@ -8,3 +8,4 @@ def unzip_backup(zip_file, extract_path):
 
     with zipfile.ZipFile(zip_file, 'r') as zipf:
         zipf.extractall(extract_path)
+    return extract_path
