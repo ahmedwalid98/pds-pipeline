@@ -5,7 +5,11 @@ from pypxlib import Table
 from paradox.normailze import normalize_value
 
 
-def extracting_csv(extract_path, output_csv_path):
+def extracting_csv(extract_path):
+    output_csv_path = r"D:\ExportedCSVs"
+
+    os.makedirs(output_csv_path, exist_ok=True)
+
     db_files = glob.glob(os.path.join(extract_path, "*.db"))
     for db_file_path in db_files:
         table_name = os.path.splitext(os.path.basename(db_file_path))[0]
