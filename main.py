@@ -1,27 +1,54 @@
 from backup.rename import rename_to_zip
 from backup.extract import unzip_backup
-from paradox.reader import extracting_csv
+from paradox.reader import reade_tables
+from paradox.export import extracting_csv
 import glob
 import os
 import time
+import logging
+import sys
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler("pipeline.log", encoding="utf-8"),
+    ],
+)
+log = logging.getLogger(__name__)
 
 paradox_path = r"D:\Conversion\St. Jude (Clinton)"
+output_csv = r"D:\ExportedCSVs"
 
 
 backup = glob.glob(os.path.join(paradox_path, "*.pds"))
-
 if not backup:
-    raise FileNotFoundError("No .pds file found")
+    log.error("No .pds file found in: %s", paradox_path)
+    sys.exit(1)
+if len(backup) > 1:
+    log.warning("Multiple .pds files found; using the first: %s", backup[0])
 pds_file = backup[0]
 
-start = time.time()
 
+log.info("Found PDS file: %s", pds_file)
+start = time.perf_counter()
+
+
+log.info("Step 1/4 — Renaming .pds → .zip ...")
 zip_file = rename_to_zip(pds_file)
-print(zip_file)
+log.info("  ZIP: %s", zip_file)
 
+log.info("Step 2/4 — Extracting archive ...")
 extract_path = unzip_backup(zip_file, paradox_path)
-print(extract_path)
-output_csv = extracting_csv(extract_path)
+
+log.info("Step 3/4 — Reading tables ...")
+log.info(f'Extracted path {extract_path}')
+db_files = reade_tables(extract_path)
+
+log.info("Step 4/4 — Exporting CSV ...")
+output_csv = extracting_csv(db_files, output_csv)
+log.info(f"CSV files exported to {output_csv}")
 print(output_csv)
 
 end = time.time()
