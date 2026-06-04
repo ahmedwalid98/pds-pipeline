@@ -23,3 +23,5 @@ def extracting_csv(db_files, output_csv_path):
                 writer.writerow(cleaned_row)
 
             log.info(f"✅ Saved: {table_name}.csv")
+
+    return output_csv_path
