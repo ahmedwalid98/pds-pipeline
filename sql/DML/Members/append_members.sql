@@ -685,7 +685,7 @@ set
         INstr(Title, '[') - 1
     )
 WHERE
-    Title like '%[%'
+    Title like '%[%';
 
 UPDATE WPMemberExport
 set

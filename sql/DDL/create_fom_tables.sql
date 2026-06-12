@@ -23,7 +23,7 @@ CREATE TABLE [FormationFamilies](
 CREATE TABLE [FormationHealthRemarks] (
         [MemRecNum] TEXT,
         [FamRecNum] TEXT,
-        [HealthRemaks] TEXT,
+        [Health_Remarks] TEXT,
         [REGenRemarks1] TEXT,
         [REConfRemarks1] TEXT
     );

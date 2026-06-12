@@ -263,3 +263,9 @@ CREATE TABLE ttblDatePlaces_Reg (
     MatchKey TEXT,
     BurialPlace Text
 );
+
+CREATE TABLE IF NOT EXISTS ValidationResults (
+    CheckName TEXT,
+    FailedRows INTEGER,
+    RunTime TEXT
+);

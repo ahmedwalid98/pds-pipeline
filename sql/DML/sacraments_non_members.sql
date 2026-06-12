@@ -866,12 +866,17 @@ set
         FROM rank_id
         WHERE
             COALESCE(
-                SacramentExport_NonMem.FirstName
-            ) = COALESCE(rank_id.FirstName)
+                SacramentExport_NonMem.FirstName,
+                ''
+            ) = COALESCE(rank_id.FirstName, '')
             AND COALESCE(
-                SacramentExport_NonMem.LastName
-            ) = COALESCE(rank_id.LastName)
-            AND COALESCE(SacramentExport_NonMem.DOB) = COALESCE(rank_id.DOB)
+                SacramentExport_NonMem.LastName,
+                ''
+            ) = COALESCE(rank_id.LastName, '')
+            AND COALESCE(
+                SacramentExport_NonMem.DOB,
+                ''
+            ) = COALESCE(rank_id.DOB, '')
     );
 
 -- Sacraments_NonMem
