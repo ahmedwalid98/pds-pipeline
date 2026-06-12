@@ -20,7 +20,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-if __name__ == '__msin__':
+if __name__ == '__main__':
     paradox_path = r"D:\Conversion\Our Lady of Lourdes (Melbourne, FL)"
     output_csv = rf"{paradox_path}\CSV_silver"
 
@@ -49,6 +49,12 @@ if __name__ == '__msin__':
 
     sacraments_non_member_scripts = glob.glob(os.path.join(
         os.getcwd(), 'sql', 'DML', 'sacraments_non_members.sql'))
+
+    core_validation = glob.glob(os.path.join(
+        os.getcwd(), 'sql', 'validation', 'core_validation', '*.sql'))
+
+    fom_validation = glob.glob(os.path.join(
+        os.getcwd(), 'sql', 'validation', 'fom_validation', '*.sql'))
 
     backup = glob.glob(os.path.join(paradox_path, "*.pds"))
     if not backup:
@@ -80,41 +86,48 @@ if __name__ == '__msin__':
     database = Database(pds_file)
 
     log.info("Creating SQLite Database")
-    conn = database.create_database()
-    log.info("Importin CSV Into SQLite Database")
-    database.import_csv(output_csv)
+    try:
+        database.create_database()
+        log.info("Importin CSV Into SQLite Database")
+        database.import_csv(output_csv)
 
-    log.info("Creating the wanted files")
+        log.info("Creating the wanted files")
 
-    database.execute_script(tables_script)
+        database.execute_script(tables_script)
 
-    log.info("Cleaning data")
-    database.execute_script(clean_script)
+        log.info("Cleaning data")
+        database.execute_script(clean_script)
 
-    log.info('Enriching Data')
-    database.execute_script(enrich_scripts)
+        log.info('Enriching Data')
+        database.execute_script(enrich_scripts)
 
-    log.info('Load contributions Data')
-    database.execute_script(contributions_scripts)
+        log.info('Load contributions Data')
+        database.execute_script(contributions_scripts)
 
-    log.info('Load families Data')
-    database.execute_script(family_scripts)
+        log.info('Load families Data')
+        database.execute_script(family_scripts)
 
-    log.info('Load formation Data')
-    database.execute_script(formation_scripts)
+        log.info('Load formation Data')
+        database.execute_script(formation_scripts)
 
-    log.info('Load members Data')
-    database.execute_script(member_scripts)
+        log.info('Load members Data')
+        database.execute_script(member_scripts)
 
-    log.info('Load sacraments Data')
-    database.execute_script(sacraments_scripts)
+        log.info('Load sacraments Data')
+        database.execute_script(sacraments_scripts)
 
-    log.info('Load tages Data')
-    database.execute_script(tags_scripts)
+        log.info('Load tages Data')
+        database.execute_script(tags_scripts)
 
-    log.info('Load Sacraments Non Members Data')
-    database.execute_script(sacraments_non_member_scripts)
+        log.info('Load Sacraments Non Members Data')
+        database.execute_script(sacraments_non_member_scripts)
 
-    conn.close()
+        log.info('Running core validation')
+        database.execute_script(core_validation)
+
+        log.info('Running formation validation')
+        database.execute_script(fom_validation)
+    finally:
+        database.conn.close()
     end = time.perf_counter()
     log.info(f"\n🕒 Finished in {end - start:.2f} seconds")
