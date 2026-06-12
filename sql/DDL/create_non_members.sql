@@ -45,7 +45,7 @@ CREATE TABLE SacramentExport_NonMem(
 -- Add a composite UNIQUE constraint
 UNIQUE(Description, LastName, FirstName, DOB) );
 
-CREATE TABLE[SacramentBooks_NonMem](
+CREATE TABLE [SacramentBooks_NonMem](
         [NonMemberID] TEXT,
         [Sacrament] TEXT,
         [Date] TEXT,
@@ -54,7 +54,7 @@ CREATE TABLE[SacramentBooks_NonMem](
         [Entry] TEXT
     );
 
-CREATE TABLE[Sacraments_NonMem](
+CREATE TABLE [Sacraments_NonMem](
         [NonMemberID] TEXT,
         [BirthPlace] TEXT,
         [FathersName] TEXT,
@@ -128,7 +128,7 @@ CREATE TABLE[Sacraments_NonMem](
         [DeathCityState] TEXT
     );
 
-CREATE TABLE[SacramentSponsors_NonMem](
+CREATE TABLE [SacramentSponsors_NonMem](
         [NonMemberID] TEXT,
         [Sacrament] TEXT,
         [SponsorName] TEXT,
@@ -136,7 +136,7 @@ CREATE TABLE[SacramentSponsors_NonMem](
         [Proxy] TEXT
     );
 
-CREATE TABLE[NonMembers]
+CREATE TABLE [NonMembers]
     (
         [NonMemberID] TEXT,
         [FirstName] TEXT,

@@ -1,16 +1,16 @@
-CREATE TABLE[Attendance](
+CREATE TABLE [Attendance](
     [MemRecNum] TEXT,
     [REClassRecNum] TEXT,
     [Date] TEXT,
     [Code] TEXT
     );
 
-CREATE TABLE[ClassDates](
+CREATE TABLE [ClassDates](
     [ClassRecNum] TEXT,
     [ClassDate] TEXT
     );
 
-CREATE TABLE[FormationFamilies](
+CREATE TABLE [FormationFamilies](
         [FamRecNum] TEXT,
         [Last_Name] TEXT,
         [REGenRemarks1] TEXT,
@@ -28,7 +28,7 @@ CREATE TABLE [FormationHealthRemarks] (
         [REConfRemarks1] TEXT
     );
 
-CREATE TABLE[PermanentRecord](
+CREATE TABLE [PermanentRecord](
         [MemRecNum] TEXT,
         [OrderNum] TEXT,
         [PRYear] TEXT,
@@ -40,14 +40,14 @@ CREATE TABLE[PermanentRecord](
         [PRComment] TEXT
     );
 
-CREATE TABLE[SessionCatechists](
+CREATE TABLE [SessionCatechists](
         [ClassRecNum] TEXT,
         [MemRecNum] TEXT,
         [Name] TEXT,
         [Description] TEXT
     );
 
-CREATE TABLE[Sessions](
+CREATE TABLE [Sessions](
         [Name] TEXT,
         [REClassRecNum] TEXT,
         [REYear_Description] TEXT,
@@ -59,7 +59,7 @@ CREATE TABLE[Sessions](
         [Inactive] TEXT
     );
 
-CREATE TABLE[StudentClasses](
+CREATE TABLE [StudentClasses](
         [MemRecNum] TEXT,
         [REClassRecNum] TEXT,
         [Mem_Name] TEXT,

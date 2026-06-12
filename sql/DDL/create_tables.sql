@@ -1,4 +1,4 @@
-CREATE TABLE[ContributionsExport](
+CREATE TABLE [ContributionsExport](
     [PDSFamilyID] TEXT,
     [FundNumber] TEXT,
     [FundYear] TEXT,
@@ -10,17 +10,17 @@ CREATE TABLE[ContributionsExport](
     [BatchNumber] TEXT
 );
 
-CREATE TABLE[FamilyKeywords](
+CREATE TABLE [FamilyKeywords](
         [PDSParishID] TEXT,
         [Keyword] TEXT
     );
 
-CREATE TABLE[FundActivities](
+CREATE TABLE [FundActivities](
         [FundNumber] TEXT,
         [Activity] TEXT
     );
 
-CREATE TABLE[Funds](
+CREATE TABLE [Funds](
         [FundNumber] TEXT,
         [FundDescription] TEXT,
         [Inactive] TEXT,
@@ -29,7 +29,7 @@ CREATE TABLE[Funds](
         [NonRecurringEndDate] TEXT
     );
 
-CREATE TABLE[HouseholdEmails](
+CREATE TABLE [HouseholdEmails](
         [FamilyEmail1] TEXT,
         [FirstName] TEXT,
         [LastName] TEXT,
@@ -43,17 +43,17 @@ CREATE TABLE[HouseholdEmails](
         [PDSFamilyID] TEXT
     );
 
-CREATE TABLE[MemberKeywords](
+CREATE TABLE [MemberKeywords](
         [PDSMemberID] TEXT,
         [Keyword] TEXT
     );
 
-CREATE TABLE[Ministries](
+CREATE TABLE [Ministries](
         [PDSMemberID] TEXT,
         [Ministry] TEXT
     );
 
-CREATE TABLE[Pledge](
+CREATE TABLE [Pledge](
         [PDSFamilyID] TEXT,
         [PaymentFrequency] TEXT,
         [StartDate] TEXT,
@@ -64,7 +64,7 @@ CREATE TABLE[Pledge](
         [FundNumber] TEXT
     );
 
-CREATE TABLE[SacramentBooks](
+CREATE TABLE [SacramentBooks](
         [PDSMemberID] TEXT,
         [Sacrament] TEXT,
         [Date] TEXT,
@@ -73,7 +73,7 @@ CREATE TABLE[SacramentBooks](
         [Entry] TEXT
     );
 
-CREATE TABLE[Sacraments](
+CREATE TABLE [Sacraments](
         [PDSMemberID] TEXT,
         [BirthPlace] TEXT,
         [FathersName] TEXT,
@@ -147,7 +147,7 @@ CREATE TABLE[Sacraments](
         [DeathCityState] TEXT
     );
 
-CREATE TABLE[SacramentSponsors](
+CREATE TABLE [SacramentSponsors](
         [PDSMemberID] TEXT,
         [Sacrament] TEXT,
         [SponsorName] TEXT,
@@ -155,12 +155,12 @@ CREATE TABLE[SacramentSponsors](
         [Proxy] TEXT
     );
 
-CREATE TABLE[Talents](
+CREATE TABLE [Talents](
         [PDSMemberID] TEXT,
         [Talent] TEXT
     );
 
-CREATE TABLE[WPFamilyExport](
+CREATE TABLE [WPFamilyExport](
         [EnvelopeNumber] TEXT,
         [PDSDioceseID] TEXT,
         [LastName] TEXT,
@@ -192,7 +192,7 @@ CREATE TABLE[WPFamilyExport](
         [NoEnvelopes] TEXT
     );
 
-CREATE TABLE[WPMemberExport](
+CREATE TABLE [WPMemberExport](
         [MemberType] TEXT,
         [Relation] TEXT,
         [LastName] TEXT,
@@ -225,7 +225,7 @@ CREATE TABLE[WPMemberExport](
         [Occupation] TEXT
     );
 
-CREATE TABLE[WPMemberExportFamPhone](
+CREATE TABLE [WPMemberExportFamPhone](
         [PDSFamilyID] TEXT,
         [PDSMemberID] TEXT,
         [Inactive] TEXT,
@@ -239,7 +239,7 @@ CREATE TABLE[WPMemberExportFamPhone](
         [FamPhoneUnlisted] TEXT
     );
 
-CREATE TABLE[OCIAReg](
+CREATE TABLE [OCIAReg](
         [MemRecNum] TEXT,
         [ProfDate] TEXT,
         [Place] TEXT,
